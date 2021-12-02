@@ -1,4 +1,4 @@
-baseurl = "https://blog.katherineroll.com"
+baseurl = "https://blog.katherineroll.com/"
 languageCode = "en-us"
 Title = "Bootcamp Blog"
 # Copyright notice. This is displayer in the footer.
