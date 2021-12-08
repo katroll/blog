@@ -1,6 +1,6 @@
 baseurl = "https://blog.katherineroll.com/"
 languageCode = "en-us"
-Title = "Bootcamp Blog"
+Title = "Flatiron School Blog"
 # Copyright notice. This is displayer in the footer.
 #copyright = "&copy; Copyright notice"
 
@@ -19,7 +19,7 @@ theme = "hugo_theme_pickles"
   authorwebsite = "katherineroll.com"
   bio = "Web Developer"
   # Short subtitle/tagline. This is displayed in the header.
-  subtitle = "Bootcamp Blog"
+  subtitle = "Software Engineering Bootcamp"
   # Logo image. This is displayed ogp image.
   #logo = "/path/to/logo"
   #favicon = "/path/to/favicon"
