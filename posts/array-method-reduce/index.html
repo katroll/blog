@@ -2,15 +2,15 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>About</title>
-<meta property="og:title" content="About">
-<meta name=twitter:title content="About">
+<title>Javascript array.reduce() Method</title>
+<meta property="og:title" content="Javascript array.reduce() Method">
+<meta name=twitter:title content="Javascript array.reduce() Method">
 <meta name=description content="Software Engineering Bootcamp">
 <meta property="og:description" content="Software Engineering Bootcamp">
 <meta name=twitter:description content="Software Engineering Bootcamp">
 <meta name=author content="Katherine Roll">
 <meta property="og:site_name" content="Flatiron School Blog">
-<meta property="og:url" content="https://blog.katherineroll.com/about/">
+<meta property="og:url" content="https://blog.katherineroll.com/posts/array-method-reduce/">
 <meta name=twitter:card content="summary">
 <meta property="og:type" content="article">
 <meta name=generator content="Hugo 0.91.2">
@@ -29,17 +29,76 @@ Software Engineering Bootcamp
 <main id=main class=l-main>
 <article class=p-article>
 <header>
-<h1>About</h1>
+<h1>Javascript array.reduce() Method</h1>
 <div>
 <div class=c-time>
 Posted on
-<time datetime=2021-12-01T20:28:40-05:00>
-Dec 1, 2021
+<time datetime=2022-01-05T16:30:47-05:00>
+Jan 5, 2022
 </time>
 </div>
 </div>
 </header>
 <section id=js-article class=p-article__body>
+<p>The past few weeks I have been consistantly forgetting the syntax for the array reduce method in Javascript. After googling it a number of times, I thought it might be helpful to write out a method for it here.</p>
+<hr>
+<h5 id=why-is-the-reduce-method-used><strong>Why is the <strong>reduce()</strong> method used?</strong></h5>
+<p>It is used to interate over an array and return one value from a calculation done on each value.</p>
+<p>For example, given the array of:</p>
+<pre><code>const arr = [1,2,3];
+</code></pre>
+<p>We can use <code>arr.reduce()</code> to sum the array values and return 6.</p>
+<hr>
+<h5 id=how-is-the-reduce-method-implemented><strong>How is the <strong>reduce()</strong> method implemented?</strong></h5>
+<p>To begin, we will go over the different peices needed for the <code>reduce()</code> method.</p>
+<p>The <code>reduce()</code> method takes in two paramerters:</p>
+<ol>
+<li>A callback function, that holds the functionality of the method.</li>
+<li>An initial value to start the calulation at (this is optional).</li>
+</ol>
+<p>The callback function also needs to have two values passed to it:</p>
+<ol>
+<li>The current value of the calculation accumulator that will be returned from the method.</li>
+<li>The value of the current index of the array as the method iterates.</li>
+</ol>
+<p>The body of the callback function will be the desired calculation. For example, to sum the values of an array of integers, the callback function could look something like this:</p>
+<pre><code>(accumulator, currentIndex) =&gt; accumulator += currentIndex
+</code></pre>
+<p>Here, for every value of the integer array, the value of each array index is being added to the accumulator.</p>
+<p>To put all of this together, the <code>reduce()</code> method to sum the above array would look like this:</p>
+<pre><code>const arr = [1,2,3];
+arr.reduce((accumulator, currentIndex) =&gt; accumulator += currentIndex, 0);
+// expected return value: 6
+</code></pre>
+<p>The zero added as the secoond arguement of <code>reduce()</code> sets the acculmulator to start at zero, and the first <code>currentIndex</code> value is 1. Without adding the 0 as the initial value of the count, the inital value of the accumulator becomes the first index (1) and the first value of <code>currentIndex</code> becomes the second index (2).</p>
+<hr>
+<h5 id=a-more-complex-example>A More Complex Example</h5>
+<p>In a project I am working on now in the second module of the bootcamp focusing on React, I encountered an array of objects with many keys that I needed to sum only one value from. The array looked like this (with many more objects in the array):</p>
+<pre><code>const flightHistory: [
+        {
+        &quot;date&quot;: &quot;2021-12-29T17:59:07.008Z&quot;,
+        &quot;passengers&quot;: 2,
+        &quot;departure&quot;: &quot;DIA&quot;,
+        &quot;destination&quot;: &quot;BOS&quot;,
+        &quot;carbon_lb&quot;: 6678.45,
+        &quot;id&quot;: &quot;33a9f35f-903e-43ce-ad22-6c9ddaa55805&quot;
+        },
+        {
+        &quot;date&quot;: &quot;2021-12-29T23:13:55.833Z&quot;,
+        &quot;passengers&quot;: 2,
+        &quot;departure&quot;: &quot;BDL&quot;,
+        &quot;destination&quot;: &quot;BCN&quot;,
+        &quot;carbon_lb&quot;: 3871.04,
+        &quot;id&quot;: &quot;4dd1a601-41e4-48b9-aca7-a4dbffbe1041&quot;
+        }
+]
+</code></pre>
+<p>My goal was to sum the estimated carbon emission from each flight, for just one person.</p>
+<p>The calculation would need to divide the carbon emission (stored in <code>carbon_lb</code>) by the number of passengers (stored in <code>passengers</code>). To do so I did some reading and testing functions out and used the <code>reduce()</code> method on this array of objects. It ended up looking like this:</p>
+<pre><code>const totalFlightCarbon = flightHistory.reduce(
+    (count, flight) =&gt; (count += flight.carbon_lb / flight.passengers), 0); 
+</code></pre>
+<p>Here, <code>count</code> is the accumulator variable and <code>flight</code> is each object in the array. As <code>reduce()</code> iterates over each object it can access desired keys and perform complex calculations, all do be returned in the <code>count</code> variable at the end. This makes <code>reduce()</code> a valuble method to be used on arrays and one worth being comfortable with.</p>
 </section>
 <footer>
 <nav class="p-pagination c-pagination">
@@ -47,6 +106,7 @@ Dec 1, 2021
 <div class=c-pagination__newer>
 </div>
 <div class=c-pagination__older>
+<a href=https://blog.katherineroll.com/posts/my-first-post/>Older</a>
 </div>
 </div>
 </nav>
