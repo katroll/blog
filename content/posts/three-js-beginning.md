@@ -73,9 +73,7 @@ The main take aways from the many hours of videos I watched about creating a sce
 
     The line following creating the camera is positioning the camera. Everything is created by default at the center of a 3 dimensional graph with x, y, and z axis. So right now the camera and cube are right on top of each other. We want to move the camera back away from the cube we created so we can view it.
 
-    In the picture below, the cube (red) is located at (0,0,0) and the camera (yellow), after positioning it, is at (0,0,3). 
-
-    ![graph of camera and cube|100x100,50%](../graph1.png)
+    Moving the camera along the positive z-axis is backing the camera up away from the cube while still pointing at it. moving it along the positive y-axis will raise the camera's "height" and the x-axis will move it left and right. 
 
     The last step is to add the camera to the scene with `scene.add(camera)`.
 
